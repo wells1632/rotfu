@@ -37,6 +37,8 @@ int main(int argc, char *argv[]) {
   int c,a,n,cr;
   a=0;
   n=0;
+  // Grab each character and manipulate it if it is a letter or number. Leave
+  // punctuation alone
   if(fp == NULL) {
     perror("Error in opening file");
     return(-1);
@@ -65,9 +67,14 @@ int main(int argc, char *argv[]) {
 	cr-=26;
       }
     } 
+    // print out the result both to stdout and the file
     printf("%c", cr);
+    char crout[2];
+    sprintf(crout, "%c", cr);
+    fprintf(fp2, crout);
   } while(1);
 
+  // Close out the files
   fclose(fp);
   fclose(fp2);
   return(0);
